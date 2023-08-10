@@ -39,41 +39,45 @@ export async function createThread({
 }
 
 export async function fetchPosts(pageNumber = 1, pageSize = 20) {
-    connectToDB();
+    
+    try {
+        connectToDB();
 
-    // Calculate the number of posts to skip
-    const skipAmount = pageSize * (pageNumber - 1);
-
-    // Fetch the posts that have no parents (top-level threads...)
-    const postsQuery = Thread
-    .find({parentId:{$in: [null, undefined]}})
-    .sort({createdAt: 'desc'})
-    .skip(skipAmount)
-    .populate({path: 'author', model: User})
-    .populate({
-        path: 'children',
-        populate: {
-            path: 'author',
-            model: User,
-            select: "_id name parentId image"
-        }
-    })
-
-    const totalPostsCount = await Thread.countDocuments({parentId:{$in: [null, undefined]}});
-
-    const posts = await postsQuery.exec();
-
-    const isNext = totalPostsCount > skipAmount * posts.length;
-
-    return { posts , isNext };
-
+        // Calculate the number of posts to skip
+        const skipAmount = pageSize * (pageNumber - 1);
+    
+        // Fetch the posts that have no parents (top-level threads...)
+        const postsQuery = Thread
+        .find({parentId:{$in: [null, undefined]}})
+        .sort({createdAt: 'desc'})
+        .skip(skipAmount)
+        .populate({path: 'author', model: User})
+        .populate({
+            path: 'children',
+            populate: {
+                path: 'author',
+                model: User,
+                select: "_id name parentId image"
+            }
+        })
+    
+        const totalPostsCount = await Thread.countDocuments({parentId:{$in: [null, undefined]}});
+    
+        const posts = await postsQuery.exec();
+    
+        const isNext = totalPostsCount > skipAmount * posts.length;
+    
+        return { posts , isNext };
+    } catch (error: any) {
+        throw new Error(`Error fetching posts: ${error.message}`)
+    }
     
 }
 
 export async function fetchThreadById(id: string) {
-    connectToDB();
 
     try {
+        connectToDB();
 
         // TODO: Populate Community
         const thread = await Thread.findById(id)
@@ -113,9 +117,8 @@ export async function addCommentToThread(
     userId: string,
     path: string
 ) {
-    connectToDB();
-
     try {
+        connectToDB();
         const originalThread = await Thread.findById(threadId);
 
         if (!originalThread) {

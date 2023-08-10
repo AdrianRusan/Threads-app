@@ -6,7 +6,6 @@ import { Button } from "@/components/ui/button"
 import {
     Form,
     FormControl,
-    FormDescription,
     FormField,
     FormItem,
     FormLabel,
@@ -26,7 +25,7 @@ import { usePathname, useRouter } from 'next/navigation'
 interface Props {
     user: {
         id: string,
-        objectID: string,
+        objectId: string,
         username: string,
         name: string,
         bio: string,
@@ -41,7 +40,7 @@ const AccountProfile = ({ user, btnTitle} : Props) => {
     const router = useRouter();
     const pathname = usePathname();
 
-    const form = useForm({
+    const form = useForm<z.infer<typeof UserValidation>>({
         resolver: zodResolver(UserValidation),
         defaultValues: {
             profile_photo: user?.image || "",
@@ -201,7 +200,7 @@ const AccountProfile = ({ user, btnTitle} : Props) => {
                     </FormItem>
                     )}
                 />
-                <Button type="submit" className='bg-primary-500'>Submit</Button>
+                <Button type="submit" className='bg-primary-500'>{btnTitle}</Button>
             </form>
         </Form>
         )
