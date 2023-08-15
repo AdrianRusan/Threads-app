@@ -55,7 +55,7 @@ function PostThread({ userId }: { userId: string}) {
             path: pathname
         });
         
-        router.push("/");
+        router.push("/home");
     }
 
     return (
@@ -69,10 +69,10 @@ function PostThread({ userId }: { userId: string}) {
                     name="thread"
                     render={({ field }) => (
                     <FormItem className="flex flex-col w-full gap-3">
-                        <FormLabel className='text-base-semibold text-light-2'>
+                        <FormLabel className='text-base-semibold dark:text-light-2 text-dark-2'>
                             Content
                         </FormLabel>
-                        <FormControl className='no-focus border border-dark-4 bg-dark-3 text-light-1'>
+                        <FormControl className='no-focus border border-dark-4 dark:bg-dark-3 bg-light-1 dark:text-light-1 text-dark-1'>
                             <Textarea 
                                 rows={15}
                                 {...field}

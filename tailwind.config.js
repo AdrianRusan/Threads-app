@@ -17,7 +17,7 @@ module.exports = {
     },
     fontSize: {
       "heading1-bold": [
-        "36px",
+        "64px",
         {
           lineHeight: "140%",
           fontWeight: "700",

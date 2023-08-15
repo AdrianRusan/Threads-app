@@ -18,7 +18,7 @@ const ThreadsTab = async ({ currentUserId, accountId, accountType }: Props) => {
         result = await fetchUserPosts(accountId);
     }
     
-    if(!result) redirect('/')
+    if(!result) redirect('/home')
     
     return (
         <section className="mt-9 flex flex-col gap-10">

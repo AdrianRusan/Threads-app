@@ -95,7 +95,7 @@ const AccountProfile = ({ user, btnTitle} : Props) => {
         if (pathname === '/profile/edit') {
             router.back();
         } else {
-            router.push('/');
+            router.push('/home');
         }
     }
     
@@ -148,7 +148,7 @@ const AccountProfile = ({ user, btnTitle} : Props) => {
                     name="name"
                     render={({ field }) => (
                     <FormItem className="flex flex-col w-full gap-3">
-                        <FormLabel className='text-base-semibold text-light-2'>
+                        <FormLabel className='text-base-semibold dark:text-light-2 text-dark-2'>
                             Name
                         </FormLabel>
                         <FormControl>
@@ -167,7 +167,7 @@ const AccountProfile = ({ user, btnTitle} : Props) => {
                     name="username"
                     render={({ field }) => (
                     <FormItem className="flex flex-col w-full gap-3">
-                        <FormLabel className='text-base-semibold text-light-2'>
+                        <FormLabel className='text-base-semibold dark:text-light-2 text-dark-2'>
                             Username
                         </FormLabel>
                         <FormControl>
@@ -186,7 +186,7 @@ const AccountProfile = ({ user, btnTitle} : Props) => {
                     name="bio"
                     render={({ field }) => (
                     <FormItem className="flex flex-col w-full gap-3">
-                        <FormLabel className='text-base-semibold text-light-2'>
+                        <FormLabel className='text-base-semibold dark:text-light-2 text-dark-2'>
                             Bio
                         </FormLabel>
                         <FormControl>

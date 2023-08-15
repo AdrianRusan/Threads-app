@@ -39,21 +39,21 @@ async function Page({ params }: {params: {id: string}}) {
                                 />
                                 <p className="max-sm:hidden">{tab.label}</p>
                                 {tab.label === 'Threads' && (
-                                    <p className="ml-1 roundex-sm bg-light-4 px-2 py-1 !text-tiny-medium text-light-2">
+                                    <p className="ml-1 roundex-sm dark:bg-light-4 bg-dark-4 px-2 py-1 !text-tiny-medium dark:text-light-2 text-dark-2">
                                         {communityDetails?.threads?.length}
                                     </p>
                                 )}
                             </TabsTrigger>
                         ))}
                     </TabsList>
-                    <TabsContent value="threads" className="w-full text-light-1">
+                    <TabsContent value="threads" className="w-full dark:text-light-1 text-dark-1">
                         <ThreadsTab 
                             currentUserId={user.id}
                             accountId={communityDetails._id}
                             accountType="Community"
                         />
                     </TabsContent>
-                    <TabsContent value="members" className="w-full text-light-1">
+                    <TabsContent value="members" className="w-full dark:text-light-1 text-dark-1">
                         <section className='mt-9 flex flex-vol gap-10'>
                             {communityDetails?.members.map((member: any) => (
                                 <UserCard 
@@ -67,7 +67,7 @@ async function Page({ params }: {params: {id: string}}) {
                             ))}
                         </section>
                     </TabsContent>
-                    <TabsContent value="requests" className="w-full text-light-1">
+                    <TabsContent value="requests" className="w-full dark:text-light-1 text-dark-1">
                         <ThreadsTab 
                             currentUserId={user.id}
                             accountId={communityDetails._id}

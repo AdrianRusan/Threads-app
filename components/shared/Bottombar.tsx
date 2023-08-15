@@ -18,7 +18,7 @@ function Bottombar() {
                     <Link 
                         href={link.route}
                         key={link.label}
-                        className={`bottombar_link ${isActive && 'bg-primary-500'}`}
+                        className={`bottombar_link ${isActive ? 'bg-primary-500' : 'hover:scale-110'}`}
                     >
                         <Image 
                             src={link.imgURL}
@@ -27,7 +27,7 @@ function Bottombar() {
                             height={24}
                         />
 
-                        <p className="text-subtle-medium text-light-1 max-sm:hidden">{link.label.split(/\s+./)[0]}</p>
+                        <p className="text-subtle-medium dark:text-light-1 text-dark-1 max-sm:hidden">{link.label.split(/\s+./)[0]}</p>
                     </Link>
                 )})}
             </div>
