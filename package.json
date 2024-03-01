@@ -20,7 +20,7 @@
     "@types/react-dom": "18.2.18",
     "@uploadthing/react": "^5.7.0",
     "all": "^0.0.0",
-    "autoprefixer": "10.4.16",
+    "autoprefixer": "10.4.17",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
     "lucide-react": "^0.303.0",
